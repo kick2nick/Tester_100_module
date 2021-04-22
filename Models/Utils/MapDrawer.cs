@@ -11,11 +11,11 @@ namespace Models.Utils
 
             Graphics gr = Graphics.FromImage(image);
 
-            using (var pen = new Pen(color, 5))
+            using (var pen = new Pen(color, 3))
                 foreach (var led in map.Leds)
                 {
                     gr.DrawRectangle(pen, led.LedRectangle);
-                    gr.DrawString($"Led №{led.OrderNum}", new Font("Tahoma", 8), Brushes.Black, new PointF { X = led.LedRectangle.X, Y = led.LedRectangle.Y + led.LedRectangle.Height });
+                    gr.DrawString($"Led №{led.LedNum}", new Font("Tahoma", 10), Brushes.Red, new PointF { X = led.LedRectangle.X, Y = led.LedRectangle.Y + led.LedRectangle.Height });
                 }
         }
     }

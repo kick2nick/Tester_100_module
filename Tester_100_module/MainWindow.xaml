@@ -4,37 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tester_100_module"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         mc:Ignorable="d"
-        Title="MainWindow" Height="846" Width="1468.558">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="320,361,0,0" VerticalAlignment="Top" Width="134" Click="Button_Click" Height="33"/>
-        <Image x:Name="img1" HorizontalAlignment="Left" Height="294" Margin="29,40,0,0" VerticalAlignment="Top" Width="425"/>
-        <Image x:Name="img2" HorizontalAlignment="Left" Height="294" Margin="551,40,0,0" VerticalAlignment="Top" Width="425"/>
-        <Image x:Name="img3" HorizontalAlignment="Left" Height="294" Margin="29,474,0,0" VerticalAlignment="Top" Width="425"/>
-        <Image x:Name="img4" HorizontalAlignment="Left" Height="294" Margin="536,474,0,0" VerticalAlignment="Top" Width="425"/>
+        Title="MainWindow" Height="432" Width="1001.558"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
-        <Slider Name="slider1" Value="70" HorizontalAlignment="Left" Margin="682,361,0,0" VerticalAlignment="Top" Width="143" Maximum="255"/>
-        <Slider Name="slider2" Value="100" HorizontalAlignment="Left" Margin="574,407,0,0" VerticalAlignment="Top" Width="143" Maximum="255"/>
-        <Slider Name="slider3" Value="100" HorizontalAlignment="Left" Margin="574,384,0,0" VerticalAlignment="Top" Width="143" Maximum="255" SmallChange="1"/>
-        <Slider Name="slider4" Value="255" HorizontalAlignment="Left" Margin="574,430,0,0" VerticalAlignment="Top" Width="143" Maximum="255"/>
-        <Slider Name="slider5" Value="255" HorizontalAlignment="Left" Margin="722,407,0,0" VerticalAlignment="Top" Width="143" Maximum="255"/>
-        <Slider Name="slider6" Value="255" HorizontalAlignment="Left" Margin="722,384,0,0" VerticalAlignment="Top" Width="143" Maximum="255"/>
-        <Slider Name="slider7" Value="255" HorizontalAlignment="Left" Margin="722,430,0,0" VerticalAlignment="Top" Width="143" Maximum="255"/>
-        <Label Content="G&#xD;&#xA;B&#xD;&#xA;R" HorizontalAlignment="Left" Height="64" Margin="551,384,0,0" VerticalAlignment="Top" Width="17"/>
-        <Label Content="G&#xA;B&#xA;R" HorizontalAlignment="Left" Height="64" Margin="870,384,0,0" VerticalAlignment="Top" Width="17"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="518,384,0,0" TextWrapping="Wrap" Text="{Binding ElementName=slider3, Path = Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28" RenderTransformOrigin="0.679,-1.957"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="518,407,0,0" TextWrapping="Wrap" Text="{Binding ElementName=slider2, Path = Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="518,435,0,0" TextWrapping="Wrap" Text="{Binding ElementName=slider4, Path = Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="887,384,0,0" TextWrapping="Wrap" Text="{Binding ElementName=slider6, Path = Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="887,407,0,0" TextWrapping="Wrap" Text="{Binding ElementName=slider5, Path = Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="887,430,0,0" TextWrapping="Wrap" Text="{Binding ElementName=slider7, Path = Value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28"/>
-        <Label Content="S&#xA;H&#xA;V" HorizontalAlignment="Left" Height="64" Margin="486,384,0,0" VerticalAlignment="Top" Width="17"/>
-        <Label Content="S&#xA;H&#xA;V" HorizontalAlignment="Left" Height="64" Margin="920,384,0,0" VerticalAlignment="Top" Width="17"/>
-        <Image x:Name="img5" HorizontalAlignment="Left" Height="294" Margin="1003,40,0,0" VerticalAlignment="Top" Width="425"/>
-        <CheckBox x:Name="checkbox1" Content="2heckBox" HorizontalAlignment="Left" Margin="1154,379,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.549,-3.667"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="649,356,0,0" TextWrapping="Wrap" Text="{Binding Value, ElementName=slider1, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28" RenderTransformOrigin="-8.286,-3.391"/>
-        <Slider x:Name="SliderExposure" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" HorizontalAlignment="Left" Margin="953,371,0,0" VerticalAlignment="Top" Height="87" Width="23" ValueChanged="Slider_ValueChanged" Maximum="0" Minimum="-8" Orientation="Vertical" SmallChange="1"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="1003,407,0,0" TextWrapping="Wrap" Text="{Binding Value, ElementName=SliderExposure, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28" RenderTransformOrigin="-8.286,-3.391"/>
+    <Window.Resources>
+        <local:ComparisonConverter x:Key="ComparisonConverter" />
+    </Window.Resources>
+    <Grid Margin="0,0,4,-3" RenderTransformOrigin="0.573,0.49">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="160*"/>
+        </Grid.RowDefinitions>
 
+        <Slider Name="slider1" Orientation="Vertical" Value="70" HorizontalAlignment="Left" Margin="24,9,0,0" VerticalAlignment="Top" Width="15" Maximum="255" Height="83" Grid.RowSpan="2"/>
+        <Image x:Name="img5" HorizontalAlignment="Left" Height="323" Margin="159,35,0,0" VerticalAlignment="Top" Width="425" Grid.RowSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="11,11,0,0" TextWrapping="Wrap" Text="{Binding Value, ElementName=slider1, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28" RenderTransformOrigin="-8.286,-3.391" Grid.Row="1"/>
+        <Slider x:Name="SliderExposure" Value="0" IsSnapToTickEnabled="True" TickFrequency="1" HorizontalAlignment="Left" Margin="93,5,0,0" VerticalAlignment="Top" Height="87" Width="23" ValueChanged="Slider_ValueChanged" Maximum="0" Minimum="-8" Orientation="Vertical" SmallChange="1" Grid.RowSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="88,11,0,0" TextWrapping="Wrap" Text="{Binding Value, ElementName=SliderExposure, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="28" RenderTransformOrigin="-8.286,-3.391" Grid.Row="1"/>
+        <DataGrid x:Name="ledGrid"  HorizontalAlignment="Left" Height="323" Margin="589,35,0,0" VerticalAlignment="Top" Width="383" 
+                  CanUserAddRows="False" CanUserDeleteRows="True" CanUserSortColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" Grid.RowSpan="2">
+        </DataGrid>
+        <CheckBox x:Name ="checkbox1" HorizontalAlignment="Left" Margin="38,46,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <RadioButton x:Name="checkboxCalib" IsChecked="{Binding Path=TesterState, Converter={StaticResource ComparisonConverter}, ConverterParameter={x:Static local:TesterState.Calibration}}" Content="Калибровка" HorizontalAlignment="Left" Margin="24,107,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-0.247,-5.133" Checked="checkboxCalib_Checked"/>
+        <RadioButton x:Name="checkboxTest" Content="Тестирование" HorizontalAlignment="Left" Margin="24,127,0,0" Grid.Row="1" VerticalAlignment="Top" Checked="checkboxTest_Checked"/>
+        <RadioButton x:Name="checkboxIdle" Content="Ожидание" HorizontalAlignment="Left" Margin="24,87,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="-0.247,-5.133" Checked="checkboxIdle_Checked"/>
+        <Label x:Name="labelBoardsCounter" Content="Протестировано &#xD;&#xA;плат:" HorizontalAlignment="Left" Height="40" Margin="24,159,0,0" Grid.Row="1" VerticalAlignment="Top" Width="135"/>
     </Grid>
 </Window>
+
